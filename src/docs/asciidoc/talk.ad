@@ -1,23 +1,26 @@
-=
+= Dokumentation & Slides mit Git, Gradle, AsciiDoc und Reveal.js
 
-[NOTE]
-====
-== Abstract as submitted:
+== Jens Schauder
 
-Softwareentwicklung ist mehr als nur Code schreiben, ein wichtiger Aspekt ist auch die Dokumentation. Wer kennt die folgenden Probleme?
+Java Entwickler
 
-* Es gibt zwei oder mehr Branches des Sourcecodes (z.B. Prod und Entwicklung, oder Version 1 u. Version 2), aber nur eine Version der Dokumentation.
-* Die Dokumentation wird in völlig ungeeigneten Formaten wie MS-Word erstellt.
-* Die Dokumentation enthält Code-Beispiele, aber ob die zum aktuellen Sourcecode passen, ist eher zweifelhaft.
-* Wenn mehrere Versionen der Dokumentation existieren, ist es eine Übung in Softwarearchäologie herauszufinden, was die Unterschiede sind und wie sie zustande gekommen sind und ob es nur ästhetische Korrekturen, Bugfixes in der Dokumentation oder Dokumentation von verändertem Verhalten sind.
+Clean Code Fanatic
 
-Dabei gibt es in der Softwareentwicklung mit Versionsverwaltung, automatischen Tests, Stylesheets und dergleichen diverse Tools, um solche Probleme zu lösen.
+JUG Organizer
+    +++
+    <img src="images/jug_final_small.png" style="vertical-align: middle; border:none;" width="150"/>
+    +++
 
-In diesem Vortrag stelle ich eine Kombination aus Tools vor, mit der sich die Verwaltung und Erstellung von Dokumentation sauber in die Entwicklung von Sourcecode integriert, namentlich: Git, Gradle, AsciiDoctor und Reveal.js, die auch für die Erstellung der Slides für diesen Vortrag genutzt wurden.
+Vater, Spieler, Läufer, Boulderer
 
-====
+++++
+<span>
+<img src="images/pivotal-spring-logo.png" style="vertical-align: middle; border:none;" width="200"/>
++
+<img src="images/spring-data-logo.png"  style="vertical-align: middle; border:none;" width="60"/>
+</span>
+++++
 
-Self Intro
 
 == Welcome to Power Point Hell
 
