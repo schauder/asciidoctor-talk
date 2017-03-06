@@ -1,0 +1,179 @@
+=
+
+[NOTE]
+====
+== Abstract as submitted:
+
+Softwareentwicklung ist mehr als nur Code schreiben, ein wichtiger Aspekt ist auch die Dokumentation. Wer kennt die folgenden Probleme?
+
+* Es gibt zwei oder mehr Branches des Sourcecodes (z.B. Prod und Entwicklung, oder Version 1 u. Version 2), aber nur eine Version der Dokumentation.
+* Die Dokumentation wird in völlig ungeeigneten Formaten wie MS-Word erstellt.
+* Die Dokumentation enthält Code-Beispiele, aber ob die zum aktuellen Sourcecode passen, ist eher zweifelhaft.
+* Wenn mehrere Versionen der Dokumentation existieren, ist es eine Übung in Softwarearchäologie herauszufinden, was die Unterschiede sind und wie sie zustande gekommen sind und ob es nur ästhetische Korrekturen, Bugfixes in der Dokumentation oder Dokumentation von verändertem Verhalten sind.
+
+Dabei gibt es in der Softwareentwicklung mit Versionsverwaltung, automatischen Tests, Stylesheets und dergleichen diverse Tools, um solche Probleme zu lösen.
+
+In diesem Vortrag stelle ich eine Kombination aus Tools vor, mit der sich die Verwaltung und Erstellung von Dokumentation sauber in die Entwicklung von Sourcecode integriert, namentlich: Git, Gradle, AsciiDoctor und Reveal.js, die auch für die Erstellung der Slides für diesen Vortrag genutzt wurden.
+
+====
+
+Self Intro
+
+== Welcome to Power Point Hell
+
+=== Tod durch Bullet Points ist unangenehm
+
+aber heute nicht unser Problem.
+
+Wer kennt solche Verzeichnisstrukturen
+
+
+* backup
+* old
+* archive
+* archive 2016
+* Architectur Documentation final
+* Architecture Documentation final
+* Architecture Documentation final comments.
+
+Who has seen the same with her/his sourecode?
+
+Why not?
+
+We use version control!
+
+== First revelation: User Version Control
+
+Today that probably means git or if you are a hipster hg
+
+commits, merge, rebase, cherry-pick for moving changes between versions.
+
+What does happen if you put office documents into version control?
+
+Nothing useful
+
+Binary files. Can't diff properly
+
+Ein Leben ohne Mops ist möglich, aber sinnlos.
+
+Ein Leben mit diffs von Office Dokumenten ist möglich, aber sinnlos.
+
+== Second revelation: We need a plain text format
+
+Plain Ascii
+
+a little to plain
+
+Markdown
+
+still very plain, very limited support for formatting
+
+DocBook
+
+can everything you possibly need to for technical documentation.
+
+But XML => aweful to write
+
+AsciiDoc
+
+Easy to write, just as markdown
+
+AsciiDoctor transforms AsciiDoc into HTML5, EPUB3, PDF, DocBook 5 and other formats
+
+Other formats includes reveal.js: What you are looking at
+
+Wide array of tools
+
+DocGist: Online edit asciidoc documents in gists, dropbox or similar
+
+Github Pages
+
+RestDoc
+
+Plugins für z.B. Atom, IntelliJ und Visual Studio Code
+
+How does AsciiDoc look like?
+
+Simple formatting
+
+Header
+
+bold
+
+italic
+
+links
+
+list
+
+Images
+
+Uml Diagrams with plantuml
+
+That's ok for small diagram, but what with my 500 element architecture diagram?
+
+convert it to image. Scale as desired, move it to dev0 and include everything from there
+
+Admonitions
+
+includes for reusing document parts
+and to minimize merge conflicts
+
+Source code includes
+
+Include the actual source code not something you copy over from time to time and which gets outdated faster then sport outfits.
+
+Variable substitution
+
+conditional content
+
+== Putting it all together
+
+We have cool asciidoc sources
+
+we have stuff to include
+
+source code
+images
+style sheets
+standard pieces
+
+We move these pieces between our branches using git
+
+Now we want to create a nice PDF, HTML-Page, Reveal.js page with it
+
+We need to integrate it in our build
+
+== Gradle
+
+compile and test your code --- so your code examples actually work.
+
+Pull everything together you need for your documents (templates, css ....)
+
+run asciidoctor to produce the outputs you want
+
+== Talking about outputs
+
+What the heck ist this reveal.js this guy is talking about
+
+html5 js thingy that makes presentations.
+
+Nice, but lots of html.
+
+Not my core competency
+
+I create it from asciidoc
+
+Way less noise in my document
+
+One stylesheet for my presentations => nice consistent look
+
+includes for standard stuff => speaker slide and begin and end
+
+Variables for stuff that appears multiple times
+
+styles (css speak) or roles (asciidoc term) for styling options
+
+e.g.
+
+backdrop behind text in front of background images
