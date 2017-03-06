@@ -147,7 +147,20 @@ body {
 }
 
 section[data-background-size=cover] h2 {
-  background: rgba($color-primary-1, 0.5);
+  background: rgba($color-secondary-2, 0.5);
   box-shadow: 0 0 5px rgba($color-primary-1, 0.5);
+  text-shadow: none;
+}
 
+section[data-background-size=cover] {
+  top: initial !important;
+}
+
+.line-through{
+  text-decoration: line-through;
+}
+
+.reveal strong {
+  font-family: 'Amatic SC';
+  font-size: 120%;
 }

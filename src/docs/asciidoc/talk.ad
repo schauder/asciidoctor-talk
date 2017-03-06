@@ -1,36 +1,17 @@
-= Dokumentation & Slides mit Git, Gradle, AsciiDoc und Reveal.js
+= Dokumentation & Slides mit AsciiDoc: und Git, Gradle und Reveal.js
 
-== Jens Schauder
+include::self.ad[]
 
-Java Entwickler
+== Once upon a time ...
 
-Clean Code Fanatic
+== !
 
-JUG Organizer
-    +++
-    <img src="images/jug_final_small.png" style="vertical-align: middle; border:none;" width="150"/>
-    +++
+image::powerpoint-versions.png[background, size=cover]
 
-Vater, Spieler, Läufer, Boulderer
+=== Oder im "architecture" Ordner
 
-++++
-<span>
-<img src="images/pivotal-spring-logo.png" style="vertical-align: middle; border:none;" width="200"/>
-+
-<img src="images/spring-data-logo.png"  style="vertical-align: middle; border:none;" width="60"/>
-</span>
-++++
-
-
-== Welcome to Power Point Hell
-
-=== Tod durch Bullet Points ist unangenehm
-
-aber heute nicht unser Problem.
-
-Wer kennt solche Verzeichnisstrukturen
-
-
+[NOTE.speaker]
+====
 * backup
 * old
 * archive
@@ -38,46 +19,57 @@ Wer kennt solche Verzeichnisstrukturen
 * Architectur Documentation final
 * Architecture Documentation final
 * Architecture Documentation final comments.
+====
 
-Who has seen the same with her/his sourecode?
+=== Wer hat das Problem mit seinem Java Source Code?
 
+[NOTE.speaker]
+====
 Why not?
 
 We use version control!
+====
 
-== First revelation: User Version Control
+== Versionsverwaltung!
 
+image::clear-lightbulb.jpeg[background, size=cover]
+
+[NOTE.speaker]
+====
 Today that probably means git or if you are a hipster hg
 
 commits, merge, rebase, cherry-pick for moving changes between versions.
+====
 
-What does happen if you put office documents into version control?
+== Und was ist mit [line-through]#Tee# Diff?
 
-Nothing useful
+image::tee.jpg[background, size=cover]
 
-Binary files. Can't diff properly
+=== Ein Leben ohne [line-through]#Mops# Diffs ist möglich, aber sinnlos.
 
-Ein Leben ohne Mops ist möglich, aber sinnlos.
+image::mops.jpg[background, size=cover]
 
-Ein Leben mit diffs von Office Dokumenten ist möglich, aber sinnlos.
+== Textbasiert!
 
-== Second revelation: We need a plain text format
+image::clear-lightbulb.jpeg[background, size=cover]
 
-Plain Ascii
+=== Plain Ascii
 
-a little to plain
+Ein bisschen zu **plain**
 
-Markdown
+=== Markdown (vgl. Stackoverflow)
 
-still very plain, very limited support for formatting
+Ziemlich plain
 
-DocBook
+Nur einfache Formattierung
 
-can everything you possibly need to for technical documentation.
+=== DocBook
 
-But XML => aweful to write
+Entworfen für technische Dokumentation
 
-AsciiDoc
+Aber **XML!**
+
+=== AsciiDoc
 
 Easy to write, just as markdown
 
@@ -180,3 +172,11 @@ styles (css speak) or roles (asciidoc term) for styling options
 e.g.
 
 backdrop behind text in front of background images
+
+== Quellen
+
+clear-glass-light-bulb https://www.pexels.com/photo/clear-glass-light-bulb-75427/
+
+Was ist mit Tee Zitiert aus der Giotto Werbung
+
+Mops By existentist - Flickr, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=2960791
