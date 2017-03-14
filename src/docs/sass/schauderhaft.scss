@@ -146,13 +146,18 @@ body {
   font-size: 50%;
 }
 
-section[data-background-size=cover] h2 {
+section[data-background-size] h2 {
   background: rgba($color-secondary-2, 0.5);
   box-shadow: 0 0 5px rgba($color-primary-1, 0.5);
   text-shadow: none;
 }
 
-section[data-background-size=cover] {
+section[data-background-size] img {
+  display: none;
+}
+
+
+section[data-background-size] {
   top: initial !important;
 }
 

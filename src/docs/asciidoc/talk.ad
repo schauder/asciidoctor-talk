@@ -1,4 +1,5 @@
 = Dokumentation & Slides mit AsciiDoc: und Git, Gradle und Reveal.js
+:icons: font
 
 include::self.ad[]
 
@@ -57,7 +58,9 @@ image::clear-lightbulb.jpeg[background, size=cover]
 
 Ein bisschen zu **plain**
 
-=== Markdown (vgl. Stackoverflow)
+=== Markdown
+
+Bekannt von Stackoverflow
 
 Ziemlich plain
 
@@ -69,83 +72,257 @@ Entworfen für technische Dokumentation
 
 Aber **XML!**
 
-=== AsciiDoc
+== AsciiDoc
 
-Easy to write, just as markdown
+=== Einfach zu schreiben.
 
-AsciiDoctor transforms AsciiDoc into HTML5, EPUB3, PDF, DocBook 5 and other formats
+=== Zielformate
 
-Other formats includes reveal.js: What you are looking at
+HTML5, EPUB3, PDF, DocBook 5 und mehr
 
-Wide array of tools
+z.B. reveal.js
 
-DocGist: Online edit asciidoc documents in gists, dropbox or similar
+=== Sie baden gerade ihre Hände drin
+
+image::palmolive.jpg[background, size=cover]
+
+=== Tools
+
+DocGist: Onlineeditor
 
 Github Pages
 
-RestDoc
+RestDoc: REST Api Doku aus Tests
 
-Plugins für z.B. Atom, IntelliJ und Visual Studio Code
+Plugins für diverse Editoren
 
-How does AsciiDoc look like?
+[NOTE.speaker]
+====
+DocGis: editiert Gists, Dropbox Content und dergleichen
 
-Simple formatting
+Plugins: Atom, IntelliJ und Visual Studio Code
+====
 
-Header
+=== Code Beispiele
 
-bold
+....
+= Dokument Titel
 
-italic
+== Kapitel
 
-links
+=== Unterkapitel
 
-list
+**bold**
 
-Images
+*italic*
 
-Uml Diagrams with plantuml
+http://blog.schauderhaft.de
 
-That's ok for small diagram, but what with my 500 element architecture diagram?
+http://blog.schauderhaft.de[Mein Blog]
 
-convert it to image. Scale as desired, move it to dev0 and include everything from there
+* list element
+....
 
-Admonitions
+=== Images
 
-includes for reusing document parts
-and to minimize merge conflicts
+....
+image::palmolive.jpg[background, size=cover]
+....
 
-Source code includes
+=== Uml Diagrams
+....
+[plantuml, diagram-classes, png]
+----
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
 
-Include the actual source code not something you copy over from time to time and which gets outdated faster then sport outfits.
+BlockProcessor <|-- DiagramBlock
+DiagramBlock <|-- DitaaBlock
+DiagramBlock <|-- PlantUmlBlock
+----
+....
 
-Variable substitution
+=== Uml Ergebnis
+image::diagram-classes.png[background, size=contain]
 
-conditional content
+[plantuml, diagram-classes, png]
+----
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
 
-== Putting it all together
+BlockProcessor <|-- DiagramBlock
+DiagramBlock <|-- DitaaBlock
+DiagramBlock <|-- PlantUmlBlock
+----
 
-We have cool asciidoc sources
+=== Die offensichtliche Frage
 
-we have stuff to include
+[quote, Imaginary Author]
+Das ist ja ganz nett, für kleine Diagramme, aber was ist mit meinem 500 Klassen Architekturdiagramm?
 
-source code
-images
-style sheets
-standard pieces
+=== Die offensichtliche Antwort
 
-We move these pieces between our branches using git
+[quote, Jens Schauder]
+In ein Bild konvertieren, nach Bedarf skalieren, nach `/dev/null` verschieben und von dort aus einfügen.
 
-Now we want to create a nice PDF, HTML-Page, Reveal.js page with it
+=== Admonitions
+....
+NOTE: Dies ist eine Notiz
+....
+NOTE: Dies ist eine Notiz
 
-We need to integrate it in our build
+=== Includes
 
-== Gradle
+....
+\include::somefile.ad[]
+....
 
-compile and test your code --- so your code examples actually work.
+Fügt den Inhalt einer Datei ein.
 
-Pull everything together you need for your documents (templates, css ....)
+=== Source Code
 
-run asciidoctor to produce the outputs you want
+....
+[source,ruby]
+----
+require 'sinatra' \<1>
+
+get '/hi' do \<2> \<3>
+  "Hello World!"
+end
+----
+<1> Library import
+<2> URL mapping
+<3> Response block
+....
+
+=== Source Code Result
+
+[source,ruby]
+----
+require 'sinatra' <1>
+
+get '/hi' do <2> <3>
+  "Hello World!"
+end
+----
+<1> Library import
+<2> URL mapping
+<3> Response block
+
+=== Source Code via include
+
+....
+[source,groovy]
+.Sample.groovy
+----
+\include::Sample.groovy[tags=helloMethod]
+----
+....
+
+Fügt den Teil zwischen
+
+....
+// tag::helloMethod[]
+....
+
+und
+
+....
+// end::helloMethod[]
+....
+
+ein.
+
+=== Variablen ersetzen
+....
+:sayMyName: Jens Schauder
+
+{sayMyName}
+....
+
+:sayMyName: Jens Schauder
+
+{sayMyName}
+
+[NOTE.speaker]
+
+Attribut!
+
+=== Variable aus dem Buildscript
+
+....
+{conference}
+....
+
+{conference}
+
+=== Conditional content
+....
+\ifdef::venue[{venue}]
+
+\ifndef::venue[]
+{conference}
+\endif::venue[]
+....
+
+ifdef::venue[{venue}]
+
+ifndef::venue[]
+{conference}
+endif::venue[]
+
+[NOTE.speaker]
+====
+Abschnitte einfügen, wenn der Kunde das Modul gekauft hat.
+
+Dinge nur für Releases aber nicht in Dokumentation für Nightly Builds.
+====
+
+== All together now!
+
+=== Wir haben Asciidoc Quellen
+
+=== Wir haben Includes
+
+* Quellcode
+* Bilder
+* CSS
+* Standard Content
+
+=== Versionsverwaltet (in Git)
+
+=== Wie bekommen wir jetzt ein ...
+
+* PDF?
+* HTML Dokument?
+* Reveal.js Dokument?
+
+== Wir brauchen ein Buildtool!
+
+image::clear-lightbulb.jpeg[background, size=cover]
+
+=== Gradle
+
+=== Ich benutze Gradle, weil ..
+
+* es ist flexibler
+* weniger wortreich
+* weil es einen netten Migrationspfad vom Customskript zum Plugin gibt.
+* nur so.
+
+Geht alles bestimmt auch mit Maven
+
+=== Der Plan
+
+1. compile and test your code
+
+2. Resourcen einsammeln (CSS, JS-Bibliotheken ...)
+
+3. run asciidoctor to produce the outputs you want
 
 == Talking about outputs
 
