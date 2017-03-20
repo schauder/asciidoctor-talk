@@ -188,30 +188,24 @@ Fügt den Inhalt einer Datei ein.
 ....
 [source,ruby]
 ----
-require 'sinatra' \<1>
+require 'sinatra'
 
-get '/hi' do \<2> \<3>
+get '/hi' do
   "Hello World!"
 end
 ----
-<1> Library import
-<2> URL mapping
-<3> Response block
 ....
 
 === Source Code Result
 
 [source,ruby]
 ----
-require 'sinatra' <1>
+require 'sinatra'
 
-get '/hi' do <2> <3>
+get '/hi' do
   "Hello World!"
 end
 ----
-<1> Library import
-<2> URL mapping
-<3> Response block
 
 === Source Code via include
 
@@ -318,42 +312,271 @@ Geht alles bestimmt auch mit Maven
 
 === Der Plan
 
-1. compile and test your code
+1. Code compilieren und testen
 
 2. Resourcen einsammeln (CSS, JS-Bibliotheken ...)
 
 3. run asciidoctor to produce the outputs you want
 
-== Talking about outputs
+=== Compilieren und testen
 
-What the heck ist this reveal.js this guy is talking about
+[source, java]
+----
+apply plugin: 'java'
+----
+ausführen mit
 
-html5 js thingy that makes presentations.
+[source]
+----
+./gradlew test
+----
 
-Nice, but lots of html.
+=== Das war einfach
 
-Not my core competency
+=== Asciidoctor -> HTML5 (1/2)
 
-I create it from asciidoc
+[source, groovy]
+----
+plugins {
+    id 'org.asciidoctor.convert' version '1.5.3'
+}
 
-Way less noise in my document
+apply plugin: 'org.asciidoctor.convert'
 
-One stylesheet for my presentations => nice consistent look
+asciidoctorj {version = '1.5.4'}
+----
 
-includes for standard stuff => speaker slide and begin and end
+=== Asciidoctor -> HTML5 (2/2)
+[source, groovy]
+----
+asciidoctor {
+    attributes \
+        'build-gradle': file('build.gradle'),
+        'sourcedir': project.sourceSets.main.java.srcDirs[0],
+        'endpoint-url': 'http://example.org',
+        'source-highlighter': 'coderay',
+        'imagesdir': 'images',
+        'toc': 'left',
+        'icons': 'font',
+        'setanchors': '',
+        'idprefix': '',
+        'idseparator': '-',
+        'docinfo1': ''
+}
+----
 
-Variables for stuff that appears multiple times
+=== Ausführen
 
-styles (css speak) or roles (asciidoc term) for styling options
+[source]
+----
+./gradlew asciidoctor
+----
 
-e.g.
+Viele Attribute aber, geht noch
 
-backdrop behind text in front of background images
+=== Asciidoctor -> Reveal.js
+
+[source, groovy]
+----
+buildscript {
+    dependencies {
+        classpath 'org.ysb33r.gradle:vfs-gradle-plugin:1.0-beta8'
+        classpath 'commons-httpclient:commons-httpclient:3.1'
+    }
+}
+
+plugins {
+  id 'org.asciidoctor.convert' version '1.5.3'
+  id 'com.github.jruby-gradle.base' version '1.2.1'
+}
+
+apply plugin: 'com.github.jruby-gradle.base'
+apply plugin: 'org.ysb33r.vfs'
+apply plugin: 'java'
+apply plugin: 'org.asciidoctor.convert'
+
+version = '1.0.0-SNAPSHOT'
+
+ext {
+    revealjsVersion = '3.2.0'
+    asciidoctorBackendVersion = 'master'
+    downloadDir = new File(buildDir,'download')
+    templateDir = new File(downloadDir,'templates')
+    revealjsDir   = new File(downloadDir,'reveal.js')
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    gems 'rubygems:slim:3.0.6'
+    gems 'rubygems:thread_safe:0.3.5'
+}
+
+task download << {
+    mkdir downloadDir
+    vfs {
+        cp "zip:https://github.com/asciidoctor/asciidoctor-reveal.js/archive/${asciidoctorBackendVersion}.zip!asciidoctor-reveal.js-${asciidoctorBackendVersion}",
+                templateDir, recursive:true, overwrite:true
+        cp "zip:https://github.com/hakimel/reveal.js/archive/${revealjsVersion}.zip!reveal.js-${revealjsVersion}",
+                revealjsDir, recursive:true, overwrite:true
+    }
+}
+
+download {
+    description "Download extra revealjs resources"
+    outputs.dir templateDir
+    outputs.dir revealjsDir
+}
+
+asciidoctorj {
+  version = '1.5.4'
+}
+
+asciidoctor {
+    dependsOn jrubyPrepare, download
+    sources {
+        include 'example-deck.adoc'
+    }
+    resources {
+        from (sourceDir) {
+            include 'images/**'
+        }
+        from (downloadDir) {
+            include 'reveal.js/**'
+        }
+    }
+    backends 'revealjs'
+    attributes \
+        'build-gradle': file('build.gradle'),
+        'sourcedir': project.sourceSets.main.java.srcDirs[0],
+        'endpoint-url': 'http://example.org',
+        'source-highlighter': 'coderay',
+        'imagesdir': './images',
+        'toc': 'left',
+        'icons': 'font',
+        'setanchors': '',
+        'idprefix': 'slide-',
+        'idseparator': '-',
+        'docinfo1': '',
+        'revealjs_theme': 'black',
+        'revealjs_transition': 'linear',
+        'revealjs_history': 'true',
+        'revealjs_slideNumber': 'true'
+    options template_dirs: [new File(templateDir,'templates/slim').absolutePath]
+}
+----
+
+=== "uiuiuiui Tiffy"
+
+image::samson.jpg[background, size=cover]
+
+=== Mein perönlicher Build (1/2)
+
+* compilieren & testen
+* ruby aufsetzen
+* asciidoctor-reveal plugin runterladen
+* reveal.js runterladen
+* Stylesheets (SCSSS) kompilieren
+* Resourcen (Bilder) kopieren
+
+
+=== Mein perönlicher Build (2/2)
+* asciidoctor Dateien konvertieren
+* Ergebnisse publizieren.
+
+=== Das meiste ist in jedem Vortrag gleich
+
+=== Ein eigenes Plugin
+
+=== Warum ist das so umständlich?
+
+1. Viele verschiedene Technologien.
+
+2. Javascript Ökosystem ist ziemlich unreif.
+
+=> Keine Standardstruktur
+
+=> Abhängigkeiten nicht Standardisiert (Web-Jars???)
+
+== Reveal.js
+
+=== Ein Präsentationstool basierend auf JS
+
+* Eine Präsentation ist ein HTML Dokument
+* Java Script kümmert sich um Folienübergänge
+* CSS um das Styling
+
+=== Einfach zu verteilen
+
+[NOTE.speaker]
+====
+Auf einen Webserver laden.
+
+Link verteilen
+====
+
+=== Features
+
+* Übergänge
+* Formattierung
+* Code Highlighting
+* Speaker Notes
+* Media
+* Overview
+
+=== Aber HTML
+
+*seriously?*
+
+=== AsciiDoc FTW!
+
+* Fast nur noch Inhalt im Dokument
+
+* Ein Stylesheet to rule them all.
+
+== Tips und Tricks
+
+=== Speaker Notes
+[source]
+----
+[NOTE.speaker]
+====
+Speaker notes
+====
+----
+=== Background Image
+[source]
+----
+image::samson.jpg[background, size=cover]
+----
+[source, css]
+----
+section[data-background-size] h2 {
+  background: rgba($color-secondary-2, 0.5);
+  box-shadow: 0 0 5px rgba($color-primary-1, 0.5);
+  text-shadow: none;
+}
+----
+=== UML als Background
+[source]
+....
+image::diagram-classes.png[background, size=contain]
+
+[plantuml, diagram-classes, png]
+----
+class BlockProcessor
+class WhatEver
+----
+....
 
 == Quellen
 
 clear-glass-light-bulb https://www.pexels.com/photo/clear-glass-light-bulb-75427/
 
-Was ist mit Tee Zitiert aus der Giotto Werbung
+Was ist mit Tee aus der Giotto Werbung
 
-Mops By existentist - Flickr, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=2960791
+Mops von existentist - Flickr, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=2960791
+
+Sesamstrasse von Fabula Filmpuppen - http://www.fabula-filmpuppen.de/Sesamstrasse054.jpg
