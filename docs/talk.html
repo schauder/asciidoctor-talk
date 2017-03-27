@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><title>Dokumentation &amp; Slides mit AsciiDoc: und Git, Gradle und Reveal.js</title><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport" /><link href="reveal.js/css/reveal.css" rel="stylesheet" /><link rel="stylesheet" href="reveal.js/css/theme/schauderhaft.css" id="theme" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" /><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet" /><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Dokumentation &amp; Slides mit AsciiDoc</h1><h2>und Git, Gradle und Reveal.js</h2><div class="preamble"><script type="text/javascript">
+    window.addEventListener("load", function() {
+
+        revealDiv = document.querySelector("body div.reveal")
+        footer = document.getElementById("schauderhaft-footer");
+        revealDiv.appendChild(footer);
+
+    } );
+</script>
+<div id="schauderhaft-footer" class="footer">
+    <span class="element">@jensschauder</span>
+    <span class="element">#JavaLand</span>
+    <span class="element">#ascii-reveal</span>
+</div></div></section>
+<section id="slide-jens-schauder"><h2>Jens Schauder</h2><div class="paragraph"><p>Java Entwickler</p></div>
+<div class="paragraph"><p>Clean Code Fanatic</p></div>
+<div class="paragraph"><p>JUG Organizer
+    
+    <img src="images/jug_final_small.png" style="vertical-align: middle; border:none;" width="150"/>
+    </p></div>
+<div class="paragraph"><p>Vater, Spieler, Läufer, Boulderer</p></div>
+<span>
+<img src="images/pivotal-spring-logo.png" style="vertical-align: middle; border:none;" width="200"/>
++
+<img src="images/spring-data-logo.png"  style="vertical-align: middle; border:none;" width="60"/>
+</span></section>
+<section id="slide-once-upon-a-time"><h2>Once upon a time &#8230;&#8203;</h2></section>
+<section><section data-background-image="./images/powerpoint-versions.png" data-background-size="cover"></section><section id="slide-oder-im-architecture-ordner"><h2>Oder im "architecture" Ordner</h2><aside class="notes"><div class="ulist"><ul><li><p>backup</p></li><li><p>old</p></li><li><p>archive</p></li><li><p>archive 2016</p></li><li><p>Architectur Documentation final</p></li><li><p>Architecture Documentation final</p></li><li><p>Architecture Documentation final comments.</p></li></ul></div></aside></section><section id="slide-wer-hat-das-problem-mit-seinem-java-source-code"><h2>Wer hat das Problem mit seinem Java Source Code?</h2><aside class="notes"><div class="paragraph"><p>Why not?</p></div>
+<div class="paragraph"><p>We use version control!</p></div></aside></section></section>
+<section id="slide-versionsverwaltung" data-background-image="./images/clear-lightbulb.jpeg" data-background-size="cover"><h2>Versionsverwaltung!</h2>
+<aside class="notes"><div class="paragraph"><p>Today that probably means git or if you are a hipster hg</p></div>
+<div class="paragraph"><p>commits, merge, rebase, cherry-pick for moving changes between versions.</p></div></aside></section>
+<section><section id="slide-und-was-ist-mit-span-class-line-through-tee-span-diff" data-background-image="./images/tee.jpg" data-background-size="cover"><h2>Und was ist mit <span class="line-through">Tee</span> Diff?</h2></section><section id="slide-ein-leben-ohne-span-class-line-through-mops-span-diffs-ist-mglich-aber-sinnlos" data-background-image="./images/mops.jpg" data-background-size="cover"><h2>Ein Leben ohne <span class="line-through">Mops</span> Diffs ist möglich, aber sinnlos.</h2></section></section>
+<section><section id="slide-textbasiert" data-background-image="./images/clear-lightbulb.jpeg" data-background-size="cover"><h2>Textbasiert!</h2></section><section id="slide-plain-ascii"><h2>Plain Ascii</h2><div class="paragraph"><p>Ein bisschen zu <strong>plain</strong></p></div></section><section id="slide-markdown"><h2>Markdown</h2><div class="paragraph"><p>Bekannt von Stackoverflow</p></div>
+<div class="paragraph"><p>Ziemlich plain</p></div>
+<div class="paragraph"><p>Nur einfache Formattierung</p></div></section><section id="slide-docbook"><h2>DocBook</h2><div class="paragraph"><p>Entworfen für technische Dokumentation</p></div>
+<div class="paragraph"><p>Aber <strong>XML!</strong></p></div></section></section>
+<section><section id="slide-asciidoc"><h2>AsciiDoc</h2></section><section id="slide-einfach-zu-schreiben"><h2>Einfach zu schreiben.</h2></section><section id="slide-zielformate"><h2>Zielformate</h2><div class="paragraph"><p>HTML5, EPUB3, PDF, DocBook 5 und mehr</p></div>
+<div class="paragraph"><p>z.B. reveal.js</p></div></section><section id="slide-sie-baden-gerade-ihre-hnde-drin" data-background-image="./images/palmolive.jpg" data-background-size="cover"><h2>Sie baden gerade ihre Hände drin</h2></section><section id="slide-tools"><h2>Tools</h2><div class="paragraph"><p>DocGist: Onlineeditor</p></div>
+<div class="paragraph"><p>Github Pages</p></div>
+<div class="paragraph"><p>RestDoc: REST Api Doku aus Tests</p></div>
+<div class="paragraph"><p>Plugins für diverse Editoren</p></div>
+<aside class="notes"><div class="paragraph"><p>DocGis: editiert Gists, Dropbox Content und dergleichen</p></div>
+<div class="paragraph"><p>Plugins: Atom, IntelliJ und Visual Studio Code</p></div></aside></section><section id="slide-code-beispiele"><h2>Code Beispiele</h2><div class="literalblock"><div class="content"><pre>= Dokument Titel
+
+== Kapitel
+
+=== Unterkapitel
+
+**bold**
+
+*italic*
+
+http://blog.schauderhaft.de
+
+http://blog.schauderhaft.de[Mein Blog]
+
+* list element</pre></div></div></section><section id="slide-images"><h2>Images</h2><div class="literalblock"><div class="content"><pre>image::palmolive.jpg[background, size=cover]</pre></div></div></section><section id="slide-uml-diagrams"><h2>Uml Diagrams</h2><div class="literalblock"><div class="content"><pre>[plantuml, diagram-classes, png]
+----
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor &lt;|-- DiagramBlock
+DiagramBlock &lt;|-- DitaaBlock
+DiagramBlock &lt;|-- PlantUmlBlock
+----</pre></div></div></section><section id="slide-uml-ergebnis" data-background-image="./images/diagram-classes.png" data-background-size="contain"><h2>Uml Ergebnis</h2>
+<div class="imageblock" style=""><img src="./images/diagram-classes.png" alt="diagram classes" /></div></section><section id="slide-die-offensichtliche-frage"><h2>Die offensichtliche Frage</h2><div class="quoteblock"><blockquote>Das ist ja ganz nett, für kleine Diagramme, aber was ist mit meinem 500 Klassen Architekturdiagramm?</blockquote><div class="attribution">&#8212; Imaginary Author</div></div></section><section id="slide-die-offensichtliche-antwort"><h2>Die offensichtliche Antwort</h2><div class="quoteblock"><blockquote>In ein Bild konvertieren, nach Bedarf skalieren, nach <code>/dev/null</code> verschieben und von dort aus einfügen.</blockquote><div class="attribution">&#8212; Jens Schauder</div></div></section><section id="slide-admonitions"><h2>Admonitions</h2><div class="literalblock"><div class="content"><pre>NOTE: Dies ist eine Notiz</pre></div></div>
+<div class="admonitionblock note"><table><tr><td class="icon"><i class="fa fa-info-circle" title="Note"></i></td><td class="content">Dies ist eine Notiz</td></tr></table></div></section><section id="slide-includes"><h2>Includes</h2><div class="literalblock"><div class="content"><pre>include::somefile.ad[]</pre></div></div>
+<div class="paragraph"><p>Fügt den Inhalt einer Datei ein.</p></div></section><section id="slide-source-code"><h2>Source Code</h2><div class="literalblock"><div class="content"><pre>[source,ruby]
+----
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+----</pre></div></div></section><section id="slide-source-code-result"><h2>Source Code Result</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="ruby language-ruby">require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end</code></pre></div></div></section><section id="slide-source-code-via-include"><h2>Source Code via include</h2><div class="literalblock"><div class="content"><pre>[source,groovy]
+.Sample.groovy
+----
+include::Sample.groovy[tags=helloMethod]
+----</pre></div></div>
+<div class="paragraph"><p>Fügt den Teil zwischen</p></div>
+<div class="literalblock"><div class="content"><pre>// tag::helloMethod[]</pre></div></div>
+<div class="paragraph"><p>und</p></div>
+<div class="literalblock"><div class="content"><pre>// end::helloMethod[]</pre></div></div>
+<div class="paragraph"><p>ein.</p></div></section><section id="slide-variablen-ersetzen"><h2>Variablen ersetzen</h2><div class="literalblock"><div class="content"><pre>:sayMyName: Jens Schauder
+
+{sayMyName}</pre></div></div>
+<div class="paragraph"><p>Jens Schauder</p></div>
+<aside class="notes">Attribut!</aside></section><section id="slide-variable-aus-dem-buildscript"><h2>Variable aus dem Buildscript</h2><div class="literalblock"><div class="content"><pre>{conference}</pre></div></div>
+<div class="paragraph"><p>Javaland 2017</p></div></section><section id="slide-conditional-content"><h2>Conditional content</h2><div class="literalblock"><div class="content"><pre>ifdef::venue[{venue}]
+
+ifndef::venue[]
+{conference}
+endif::venue[]</pre></div></div>
+<div class="paragraph"><p>Javaland 2017</p></div>
+<aside class="notes"><div class="paragraph"><p>Abschnitte einfügen, wenn der Kunde das Modul gekauft hat.</p></div>
+<div class="paragraph"><p>Dinge nur für Releases aber nicht in Dokumentation für Nightly Builds.</p></div></aside></section></section>
+<section><section id="slide-all-together-now"><h2>All together now!</h2></section><section id="slide-wir-haben-asciidoc-quellen"><h2>Wir haben Asciidoc Quellen</h2></section><section id="slide-wir-haben-includes"><h2>Wir haben Includes</h2><div class="ulist"><ul><li><p>Quellcode</p></li><li><p>Bilder</p></li><li><p>CSS</p></li><li><p>Standard Content</p></li></ul></div></section><section id="slide-versionsverwaltet-in-git"><h2>Versionsverwaltet (in Git)</h2></section><section id="slide-wie-bekommen-wir-jetzt-ein"><h2>Wie bekommen wir jetzt ein &#8230;&#8203;</h2><div class="ulist"><ul><li><p>PDF?</p></li><li><p>HTML Dokument?</p></li><li><p>Reveal.js Dokument?</p></li></ul></div></section></section>
+<section><section id="slide-wir-brauchen-ein-buildtool" data-background-image="./images/clear-lightbulb.jpeg" data-background-size="cover"><h2>Wir brauchen ein Buildtool!</h2></section><section id="slide-gradle"><h2>Gradle</h2></section><section id="slide-ich-benutze-gradle-weil"><h2>Ich benutze Gradle, weil ..</h2><div class="ulist"><ul><li><p>es ist flexibler</p></li><li><p>weniger wortreich</p></li><li><p>weil es einen netten Migrationspfad vom Customskript zum Plugin gibt.</p></li><li><p>nur so.</p></li></ul></div>
+<div class="paragraph"><p>Geht alles bestimmt auch mit Maven</p></div></section><section id="slide-der-plan"><h2>Der Plan</h2><div class="olist arabic"><ol class="arabic"><li><p>Code compilieren und testen</p></li><li><p>Resourcen einsammeln (CSS, JS-Bibliotheken &#8230;&#8203;)</p></li><li><p>run asciidoctor to produce the outputs you want</p></li></ol></div></section><section id="slide-compilieren-und-testen"><h2>Compilieren und testen</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="java language-java">apply plugin: 'java'</code></pre></div></div>
+<div class="paragraph"><p>ausführen mit</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code>./gradlew test</code></pre></div></div></section><section id="slide-das-war-einfach"><h2>Das war einfach</h2></section><section id="slide-asciidoctor-html5"><h2>Asciidoctor &#8594; HTML5</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">plugins {
+  id 'org.asciidoctor.convert' version '1.5.3'}
+
+apply plugin: 'org.asciidoctor.convert'
+
+asciidoctorj {version = '1.5.4'}
+
+asciidoctor {
+    attributes \
+        'build-gradle': file('build.gradle'),
+        'sourcedir': project.sourceSets.main.java.srcDirs[0],
+        'endpoint-url': 'http://example.org',
+        'source-highlighter': 'coderay',
+        'imagesdir': 'images',
+        'toc': 'left',
+        'icons': 'font',
+        'setanchors': '',
+        'idprefix': '',
+        'idseparator': '-',
+        'docinfo1': ''
+}</code></pre></div></div></section><section id="slide-ausfhren"><h2>Ausführen</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>./gradlew asciidoctor</code></pre></div></div>
+<div class="paragraph"><p>Viele Attribute aber, geht noch</p></div></section><section id="slide-asciidoctor-reveal-js"><h2>Asciidoctor &#8594; Reveal.js</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">buildscript {
+    dependencies {
+        classpath 'org.ysb33r.gradle:vfs-gradle-plugin:1.0-beta8'
+        classpath 'commons-httpclient:commons-httpclient:3.1'
+    }
+}
+
+plugins {
+  id 'org.asciidoctor.convert' version '1.5.3'
+  id 'com.github.jruby-gradle.base' version '1.2.1'
+}
+
+apply plugin: 'com.github.jruby-gradle.base'
+apply plugin: 'org.ysb33r.vfs'
+apply plugin: 'java'
+apply plugin: 'org.asciidoctor.convert'
+
+version = '1.0.0-SNAPSHOT'
+
+ext {
+    revealjsVersion = '3.2.0'
+    asciidoctorBackendVersion = 'master'
+    downloadDir = new File(buildDir,'download')
+    templateDir = new File(downloadDir,'templates')
+    revealjsDir   = new File(downloadDir,'reveal.js')
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    gems 'rubygems:slim:3.0.6'
+    gems 'rubygems:thread_safe:0.3.5'
+}
+
+task download &lt;&lt; {
+    mkdir downloadDir
+    vfs {
+        cp "zip:https://github.com/asciidoctor/asciidoctor-reveal.js/archive/${asciidoctorBackendVersion}.zip!asciidoctor-reveal.js-${asciidoctorBackendVersion}",
+                templateDir, recursive:true, overwrite:true
+        cp "zip:https://github.com/hakimel/reveal.js/archive/${revealjsVersion}.zip!reveal.js-${revealjsVersion}",
+                revealjsDir, recursive:true, overwrite:true
+    }
+}
+
+download {
+    description "Download extra revealjs resources"
+    outputs.dir templateDir
+    outputs.dir revealjsDir
+}
+
+asciidoctorj {
+  version = '1.5.4'
+}
+
+asciidoctor {
+    dependsOn jrubyPrepare, download
+    sources {
+        include 'example-deck.adoc'
+    }
+    resources {
+        from (sourceDir) {
+            include 'images/**'
+        }
+        from (downloadDir) {
+            include 'reveal.js/**'
+        }
+    }
+    backends 'revealjs'
+    attributes \
+        'build-gradle': file('build.gradle'),
+        'sourcedir': project.sourceSets.main.java.srcDirs[0],
+        'endpoint-url': 'http://example.org',
+        'source-highlighter': 'coderay',
+        'imagesdir': './images',
+        'toc': 'left',
+        'icons': 'font',
+        'setanchors': '',
+        'idprefix': 'slide-',
+        'idseparator': '-',
+        'docinfo1': '',
+        'revealjs_theme': 'black',
+        'revealjs_transition': 'linear',
+        'revealjs_history': 'true',
+        'revealjs_slideNumber': 'true'
+    options template_dirs: [new File(templateDir,'templates/slim').absolutePath]
+}</code></pre></div></div></section><section id="slide--uiuiuiui-tiffy" data-background-image="./images/samson.jpg" data-background-size="cover"><h2>"uiuiuiui Tiffy"</h2></section><section id="slide-mein-pernlicher-build-1-2"><h2>Mein perönlicher Build (1/2)</h2><div class="ulist"><ul><li><p>compilieren &amp; testen</p></li><li><p>ruby aufsetzen</p></li><li><p>asciidoctor-reveal plugin runterladen</p></li><li><p>reveal.js runterladen</p></li><li><p>Stylesheets (SCSSS) kompilieren</p></li><li><p>Resourcen (Bilder) kopieren</p></li></ul></div></section><section id="slide-mein-pernlicher-build-2-2"><h2>Mein perönlicher Build (2/2)</h2><div class="ulist"><ul><li><p>asciidoctor Dateien konvertieren</p></li><li><p>Ergebnisse publizieren.</p></li></ul></div></section><section id="slide-das-meiste-ist-in-jedem-vortrag-gleich"><h2>Das meiste ist in jedem Vortrag gleich</h2></section><section id="slide-ein-eigenes-plugin"><h2>Ein eigenes Plugin</h2></section><section id="slide-warum-ist-das-so-umstndlich"><h2>Warum ist das so umständlich?</h2><div class="olist arabic"><ol class="arabic"><li><p>Viele verschiedene Technologien.</p></li><li><p>Javascript Ökosystem ist ziemlich unreif.</p></li></ol></div>
+<div class="paragraph"><p>&#8658; Keine Standardstruktur</p></div>
+<div class="paragraph"><p>&#8658; Abhängigkeiten nicht standardisiert (Web-Jars???)</p></div></section></section>
+<section><section id="slide-reveal-js"><h2>Reveal.js</h2></section><section id="slide-ein-prsentationstool-basierend-auf-js"><h2>Ein Präsentationstool basierend auf JS</h2><div class="ulist"><ul><li><p>Eine Präsentation ist ein HTML Dokument</p></li><li><p>Java Script kümmert sich um Folienübergänge</p></li><li><p>CSS um das Styling</p></li></ul></div></section><section id="slide-einfach-zu-verteilen"><h2>Einfach zu verteilen</h2><aside class="notes"><div class="paragraph"><p>Auf einen Webserver laden.</p></div>
+<div class="paragraph"><p>Link verteilen</p></div></aside></section><section id="slide-features"><h2>Features</h2><div class="ulist"><ul><li><p>Übergänge</p></li><li><p>Formattierung</p></li><li><p>Code Highlighting</p></li><li><p>Speaker Notes</p></li><li><p>Media</p></li><li><p>Overview</p></li></ul></div></section><section id="slide-aber-html"><h2>Aber HTML</h2><div class="paragraph"><p><strong>seriously?</strong></p></div></section><section id="slide-asciidoc-ftw"><h2>AsciiDoc FTW!</h2><div class="ulist"><ul><li><p>Fast nur noch Inhalt im Dokument</p></li><li><p>Ein Stylesheet to rule them all.</p></li></ul></div></section></section>
+<section><section id="slide-tips-und-tricks"><h2>Tips und Tricks</h2></section><section id="slide-speaker-notes"><h2>Speaker Notes</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>[NOTE.speaker]
+====
+Speaker notes
+====</code></pre></div></div></section><section id="slide-background-image"><h2>Background Image</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>image::samson.jpg[background, size=cover]</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="css language-css">section[data-background-size] h2 {
+  background: rgba($color-secondary-2, 0.5);
+  box-shadow: 0 0 5px rgba($color-primary-1, 0.5);
+  text-shadow: none;
+}</code></pre></div></div></section><section id="slide-uml-als-background"><h2>UML als Background</h2><div class="listingblock"><div class="content"><pre class="highlight"><code>image::diagram-classes.png[background, size=contain]
+
+[plantuml, diagram-classes, png]
+----
+class BlockProcessor
+class WhatEver
+----</code></pre></div></div></section><section id="slide-footer"><h2>Footer</h2><div class="literalblock"><div class="content"><pre>[subs="attributes"]
+++++
+&lt;script type="text/javascript"&gt;
+    window.addEventListener("load", function() {
+
+        revealDiv = document.querySelector("body div.reveal")
+        footer = document.getElementById("schauderhaft-footer");
+        revealDiv.appendChild(footer);
+
+    } );
+&lt;/script&gt;
+&lt;div id="schauderhaft-footer" class="footer"&gt;
+    &lt;span class="element"&gt;{twitter-tag}&lt;/span&gt;
+    &lt;span class="element"&gt;{conference-tag}&lt;/span&gt;
+    &lt;span class="element"&gt;{talk-tag}&lt;/span&gt;
+&lt;/div&gt;
+++++</pre></div></div></section></section>
+<section id="slide-quellen" class="credits"><h2>Quellen</h2><div class="paragraph"><p><em>clear-glass-light-bulb</em> von <a href="https://www.pexels.com/photo/clear-glass-light-bulb-75427/" class="bare">https://www.pexels.com/photo/clear-glass-light-bulb-75427/</a></p></div>
+<div class="paragraph"><p><em>Was ist mit Tee</em> aus der Giotto Werbung</p></div>
+<div class="paragraph"><p><em>Mops</em> von existentist - Flickr, CC BY 2.0, <a href="https://commons.wikimedia.org/w/index.php?curid=2960791" class="bare">https://commons.wikimedia.org/w/index.php?curid=2960791</a></p></div>
+<div class="paragraph"><p><em>Sie baden gerade ihre Hände drin</em> aus der Giotto Werbung</p></div>
+<div class="paragraph"><p><em>Sesamstrasse</em> von Fabula Filmpuppen - <a href="http://www.fabula-filmpuppen.de/Sesamstrasse054.jpg" class="bare">http://www.fabula-filmpuppen.de/Sesamstrasse054.jpg</a></p></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: false,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: false,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'schauderhaft',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'linear',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: 960,
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script></body></html>
