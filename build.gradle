@@ -95,7 +95,8 @@ asciidoctor {
             'revealjs_theme': 'schauderhaft',
             'revealjs_transition': 'linear',
             'revealjs_history': 'true',
-            'revealjs_slideNumber': 'true',
+            'revealjs_slideNumber': 'false',
+            'revealjs_controls' : 'false',
             'conference': 'Javaland 2017'
     options template_dirs: [new File(templateDir, 'templates/slim').absolutePath]
 }

@@ -1,5 +1,10 @@
 = Dokumentation & Slides mit AsciiDoc: und Git, Gradle und Reveal.js
 :icons: font
+:twitter-tag: @jensschauder
+:conference-tag: #JavaLand
+:talk-tag: #ascii-reveal
+
+include::footer.ad[]
 
 include::self.ad[]
 
@@ -333,22 +338,17 @@ ausführen mit
 
 === Das war einfach
 
-=== Asciidoctor -> HTML5 (1/2)
+=== Asciidoctor -> HTML5
 
 [source, groovy]
 ----
 plugins {
-    id 'org.asciidoctor.convert' version '1.5.3'
-}
+  id 'org.asciidoctor.convert' version '1.5.3'}
 
 apply plugin: 'org.asciidoctor.convert'
 
 asciidoctorj {version = '1.5.4'}
-----
 
-=== Asciidoctor -> HTML5 (2/2)
-[source, groovy]
-----
 asciidoctor {
     attributes \
         'build-gradle': file('build.gradle'),
@@ -498,7 +498,7 @@ image::samson.jpg[background, size=cover]
 
 => Keine Standardstruktur
 
-=> Abhängigkeiten nicht Standardisiert (Web-Jars???)
+=> Abhängigkeiten nicht standardisiert (Web-Jars???)
 
 == Reveal.js
 
@@ -571,12 +571,37 @@ class WhatEver
 ----
 ....
 
+=== Footer
+
+....
+[subs="attributes"]
+++++
+<script type="text/javascript">
+    window.addEventListener("load", function() {
+
+        revealDiv = document.querySelector("body div.reveal")
+        footer = document.getElementById("schauderhaft-footer");
+        revealDiv.appendChild(footer);
+
+    } );
+</script>
+<div id="schauderhaft-footer" class="footer">
+    <span class="element">{twitter-tag}</span>
+    <span class="element">{conference-tag}</span>
+    <span class="element">{talk-tag}</span>
+</div>
+++++
+....
+
+[.credits]
 == Quellen
 
-clear-glass-light-bulb https://www.pexels.com/photo/clear-glass-light-bulb-75427/
+_clear-glass-light-bulb_ von https://www.pexels.com/photo/clear-glass-light-bulb-75427/
 
-Was ist mit Tee aus der Giotto Werbung
+_Was ist mit Tee_ aus der Giotto Werbung
 
-Mops von existentist - Flickr, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=2960791
+_Mops_ von existentist - Flickr, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=2960791
 
-Sesamstrasse von Fabula Filmpuppen - http://www.fabula-filmpuppen.de/Sesamstrasse054.jpg
+_Sie baden gerade ihre Hände drin_ aus der Giotto Werbung
+
+_Sesamstrasse_ von Fabula Filmpuppen - http://www.fabula-filmpuppen.de/Sesamstrasse054.jpg
